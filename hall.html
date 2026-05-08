@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Прибуття: Станція Logirace-04</title>
+    <link rel="stylesheet" href="hall.css">
+</head>
+<body>
+    <div class="hall-scene">
+        <!-- Атмосферні ефекти -->
+        <div class="ambient-light"></div>
+        <div class="vignette"></div>
+        <div class="light-beams"></div>
+        
+        <!-- Верхня частина з ілюмінатором -->
+        <div class="upper-section">
+            <div class="window-frame">
+                <div class="window">
+                    <div class="mars-landscape"></div>
+                    <div class="window-glare"></div>
+                    <div class="window-inner-shadow"></div>
+                </div>
+                <div class="window-bolts">
+                    <div class="bolt"></div>
+                    <div class="bolt"></div>
+                    <div class="bolt"></div>
+                    <div class="bolt"></div>
+                </div>
+            </div>
+            
+            <div class="wall-text">STATION: LOGIRACE-04</div>
+            <div class="status-panel">
+                <span class="status-led"></span>
+                СТАТУС: ПРИБУТТЯ | ЧАС ПРИБУТТЯ: 06:42 
+            </div>
+            
+            <div class="wall-panel wall-panel-left">
+                <div class="panel-light"></div>
+                <div class="panel-light"></div>
+                <div class="panel-light"></div>
+                <div class="panel-label">PWR</div>
+            </div>
+            <div class="wall-panel wall-panel-right">
+                <div class="panel-light"></div>
+                <div class="panel-light"></div>
+                <div class="panel-light"></div>
+                <div class="panel-label">SYS</div>
+            </div>
+        </div>
+        
+        <!-- Нижня частина зі столом -->
+        <div class="lower-section">
+            <div class="desk">
+                <div class="desk-surface"></div>
+                <div class="desk-edge"></div>
+                <div class="desk-scratches"></div>
+                
+                <!-- РЮКЗАК - ліва частина столу -->
+                <div class="backpack" onclick="openBackpack(event)">
+                    <div class="backpack-strap"></div>
+                    <div class="backpack-strap-right"></div>
+                    <div class="backpack-top-handle"></div>
+                    <div class="backpack-main-body"></div>
+                    <div class="backpack-pocket"></div>
+                    <div class="backpack-pocket-small"></div>
+                    <div class="backpack-zip"></div>
+                    <div class="backpack-logo">MARS GEAR</div>
+                    <div class="backpack-badge"></div>
+                </div>
+                
+                <!-- ЗАПИСКА - центр столу -->
+                <a href="note.html" class="note-on-desk">
+                    <div class="note-paper">
+                        <div class="note-fold"></div>
+                        <div class="note-content">
+                            <div class="note-title">ПРОТОКОЛ</div>
+                            <div class="note-line"></div>
+                            <div class="note-line short"></div>
+                            <div class="note-line"></div>
+                        </div>
+                        <div class="note-seal"></div>
+                    </div>
+                    <div class="note-label">📄 ЗАПИСКА МІСІЇ</div>
+                </a>
+                
+                <!-- КУХОЛЬ З КАВОЮ -->
+                <div class="coffee-mug">
+                    <div class="mug-body"></div>
+                    <div class="mug-handle"></div>
+                    <div class="mug-steam"></div>
+                    <div class="mug-steam-2"></div>
+                </div>
+                
+                <!-- ПЛАНШЕТ -->
+                <div class="data-pad">
+                    <div class="data-pad-screen">
+                        <div class="data-pad-text">>_system_ok</div>
+                    </div>
+                </div>
+                
+                <!-- ІНСТРУМЕНТИ -->
+                <div class="tools-set">
+                    <div class="tool-wrench"></div>
+                    <div class="tool-screwdriver"></div>
+                </div>
+                
+                <!-- ШОЛОМ -->
+                <div class="space-helmet">
+                    <div class="helmet-visor"></div>
+                </div>
+                
+                <!-- КЛЮЧ-КАРТА -->
+                <div class="keycard"></div>
+                
+                <!-- БЛОКНОТ -->
+                <div class="notebook"></div>
+            </div>
+            
+            <!-- НОВА КНОПКА - ПОЧАТИ КВЕСТ -->
+            <div class="quest-button-container">
+                <a href="index.html" class="quest-button">
+                    <div class="button-glow"></div>
+                    <div class="button-content">
+                        <span class="button-icon">🚀</span>
+                        <span class="button-text">ПОЧАТИ КВЕСТ ДЛЯ ПРОХОДУ НА БАЗУ</span>
+                        <span class="button-arrow">→</span>
+                    </div>
+                    <div class="button-pulse"></div>
+                </a>
+            </div>
+            
+            <div class="floor">
+                <div class="floor-grid"></div>
+                <div class="floor-reflection"></div>
+            </div>
+            
+            <div class="cables">
+                <div class="cable"></div>
+                <div class="cable"></div>
+                <div class="cable"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно рюкзака -->
+    <div id="backpack-modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎒 ВМІСТ РЮКЗАКА</h3>
+                <span class="modal-close" onclick="closeModalDirect()">✕</span>
+            </div>
+            <div class="inventory-grid">
+                <div class="item"><span class="item-icon">🔦</span><span class="item-name">Ліхтарик</span><span class="item-desc">100%</span></div>
+                <div class="item"><span class="item-icon">🍫</span><span class="item-name">Енергетик</span><span class="item-desc">x3</span></div>
+                <div class="item"><span class="item-icon">🩹</span><span class="item-name">Аптечка</span><span class="item-desc">Нова</span></div>
+                <div class="item"><span class="item-icon">📡</span><span class="item-name">Сканер</span><span class="item-desc">Активний</span></div>
+                <div class="item"><span class="item-icon">💧</span><span class="item-name">Вода</span><span class="item-desc">1L</span></div>
+                <div class="item"><span class="item-icon">🔋</span><span class="item-name">Батареї</span><span class="item-desc">x4</span></div>
+                <div class="item"><span class="item-icon">🎧</span><span class="item-name">Навушники</span><span class="item-desc">Шумозахисні</span></div>
+                <div class="item"><span class="item-icon">📓</span><span class="item-name">Журнал</span><span class="item-desc">Записи</span></div>
+            </div>
+            <p class="inventory-hint">📦 Твоє спорядження для місії на Марсі</p>
+        </div>
+    </div>
+
+    <script src="hall.js"></script>
+</body>
+</html>

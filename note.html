@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід у систему: Місія Марс</title>
+    <link rel="stylesheet" href="note.css">
+</head>
+<body>
+    <!-- Координати в кутку (Пункт 6в) -->
+    <div id="mars-coords">LOC: 18.4°N 226.0°E | CRATER: JEZERO</div>
+
+    <div class="overlay"></div>
+
+    <div class="terminal-container">
+        <div class="paper-note">
+            <div class="note-content">
+                <div class="stamp">TOP SECRET</div>
+                <h2>ПРОТОКОЛ МІСІЇ №0412</h2>
+                <p><strong>СТАТУС:</strong> Зв'язок із Землею перервано 48 годин тому.</p> 
+                
+                <hr>
+                
+                <p>Вітаю на базі LogiRace. Ти — останній інженер екіпажу.</p>
+                
+                <h3>ЗАВДАННЯ:</h3>
+                <ul>
+                    <li><strong>а) Відновлення живлення:</strong> Пройти через шлюзи, вводячи коди доступу.</li>
+                    <li><strong>б) Контроль ресурсів:</strong> Кожна помилка активує скидання кисню.</li>
+                    <li><strong>г) Час обмежений:</strong> Балон за спиною не вічний.</li>
+                </ul>
+
+                <p class="warning">ПАМ'ЯТАЙ: Система приймає лише точні дані.</p>
+
+                <div class="btn-group">
+                    <!-- Головна кнопка переходу до гри -->
+                    <a href="hall.html" class="start-btn">повернутись до холу</a>
+                    
+                    <div class="sub-btns">
+                        <button onclick="checkConnection()">📡 ЗВ'ЯЗОК</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Повідомлення про помилку зв'язку -->
+    <div id="conn-error" class="error-msg">CONNECTION FAILED: NO SIGNAL FROM EARTH</div>
+
+    <script src="note.js"></script>
+</body>
+</html>

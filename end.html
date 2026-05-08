@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mars Panorama | Epic Finale</title>
+    <link rel="stylesheet" href="end.css">
+</head>
+<body>
+    <!-- Контейнер для 3D панорами -->
+    <div id="panorama-container"></div>
+    
+    <!-- UI елементи поверх панорами -->
+    <div class="overlay">
+        <div class="title-container">
+            <h1 class="epic-title">
+                <span class="title-line">ВИ ПЕРШОПРОХОДЕЦЬ</span>
+                <span class="title-sub">MARS EXPLORATION COMPLETE</span>
+            </h1>
+        </div>
+        
+        <div class="stats-panel">
+            <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-info">
+                    <span class="stat-label">Місія</span>
+                    <span class="stat-value">Успішна</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🪐</div>
+                <div class="stat-info">
+                    <span class="stat-label">Сектор</span>
+                    <span class="stat-value">Sektor-04</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-info">
+                    <span class="stat-label">Ранг</span>
+                    <span class="stat-value">Легенда</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message-container">
+            <p id="typing-text"></p>
+        </div>
+        
+        <div class="button-group">
+            <button class="action-btn primary" onclick="restartGame()">
+                🔄 ПОЧАТИ ЗНОВУ
+            </button>
+        </div>
+        
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="end.js"></script>
+</body>
+</html>

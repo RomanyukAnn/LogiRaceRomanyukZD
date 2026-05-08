@@ -1,0 +1,1143 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    background: #030507;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    overflow: hidden;
+}
+
+.hall-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0a0a12 0%, #020205 100%);
+    overflow: hidden;
+}
+
+/* ========== АТМОСФЕРНІ ЕФЕКТИ ========== */
+.ambient-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 30%, rgba(255, 94, 0, 0.06), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: ambientPulse 8s ease-in-out infinite;
+}
+
+@keyframes ambientPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.5) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.light-beams {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(115deg, 
+        transparent, 
+        transparent 120px, 
+        rgba(255,94,0,0.02) 120px, 
+        rgba(255,94,0,0.02) 240px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ========== ВЕРХНЯ СЕКЦІЯ ========== */
+.upper-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 32%;
+    background: linear-gradient(to bottom, #0d0d18 0%, #0a0a12 100%);
+    z-index: 5;
+}
+
+/* ІЛЮМІНАТОР */
+.window-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 260px;
+    background: linear-gradient(145deg, #2a2a3a, #1a1a2a);
+    border-radius: 30px;
+    padding: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.window {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+}
+
+.mars-landscape {
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000') center/cover;
+    position: relative;
+    animation: slowZoom 25s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.window-glare {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    transform: rotate(25deg);
+    animation: glareMove 12s linear infinite;
+}
+
+@keyframes glareMove {
+    0% { transform: rotate(25deg) translate(-30%, -30%); }
+    100% { transform: rotate(25deg) translate(30%, 30%); }
+}
+
+.window-inner-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.window-bolts {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    pointer-events: none;
+}
+
+.bolt {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #5a5a6a, #2a2a3a);
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.bolt:nth-child(1) { top: 5px; left: 5px; }
+.bolt:nth-child(2) { top: 5px; right: 5px; }
+.bolt:nth-child(3) { bottom: 5px; left: 5px; }
+.bolt:nth-child(4) { bottom: 5px; right: 5px; }
+
+.wall-text {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff6a2a, #ffaa55);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255,94,0,0.3);
+    z-index: 10;
+}
+
+.status-panel {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 11px;
+    color: #5aff5a;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 15px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', monospace;
+    border-left: 2px solid #5aff5a;
+    border-right: 2px solid #5aff5a;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+.status-led {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #5aff5a;
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: blink 1s infinite;
+    box-shadow: 0 0 5px #5aff5a;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.wall-panel {
+    position: absolute;
+    bottom: 15px;
+    width: 60px;
+    background: linear-gradient(145deg, #1a1a2a, #0a0a15);
+    border-radius: 8px;
+    border: 1px solid #2a2a3a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 8px;
+    z-index: 10;
+}
+
+.wall-panel-left { left: 20px; }
+.wall-panel-right { right: 20px; }
+
+.panel-light {
+    width: 22px;
+    height: 22px;
+    background: #1a3a1a;
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 0 0 3px #2aff2a;
+    animation: panelGlow 2s ease-in-out infinite alternate;
+}
+
+.panel-light:nth-child(2) { animation-delay: 0.5s; }
+.panel-light:nth-child(3) { animation-delay: 1s; }
+
+@keyframes panelGlow {
+    0% { background: #1a3a1a; box-shadow: 0 0 2px #2aff2a; }
+    100% { background: #2aff2a; box-shadow: 0 0 10px #2aff2a; }
+}
+
+.panel-label {
+    font-size: 7px;
+    color: #6a6a8a;
+    margin-top: 3px;
+    font-family: monospace;
+}
+
+/* ========== НИЖНЯ СЕКЦІЯ ========== */
+.lower-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 68%;
+    z-index: 20;
+}
+
+/* СТІЛ */
+.desk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: transparent;
+    z-index: 25;
+}
+
+.desk-surface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 88%;
+    background: linear-gradient(145deg, #3a2a1a, #1f1508);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    border-top: 3px solid #5a4a2a;
+}
+
+.desk-edge {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #1f1508;
+    border-radius: 0 0 10px 10px;
+}
+
+.desk-scratches {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 88%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.04), transparent);
+    pointer-events: none;
+    border-radius: 20px 20px 0 0;
+}
+
+/* ========== РЮКЗАК (ЛІВОРУЧ) ========== */
+.backpack {
+    position: absolute;
+    bottom: 35px;
+    left: 50px;
+    width: 150px;
+    height: 180px;
+    background: linear-gradient(145deg, #4a6a4a, #2a4a2a);
+    border-radius: 25px 25px 12px 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 30;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+    border: 2px solid #6a9a6a;
+}
+
+.backpack:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+}
+
+.backpack-strap {
+    position: absolute;
+    top: 18px;
+    left: -16px;
+    width: 20px;
+    height: 70px;
+    background: #3a3a2a;
+    border-radius: 8px;
+    transform: rotate(-10deg);
+}
+
+.backpack-strap-right {
+    position: absolute;
+    top: 18px;
+    right: -16px;
+    width: 20px;
+    height: 70px;
+    background: #3a3a2a;
+    border-radius: 8px;
+    transform: rotate(10deg);
+}
+
+.backpack-top-handle {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 12px;
+    background: #3a3a2a;
+    border-radius: 5px 5px 0 0;
+}
+
+.backpack-main-body {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background: linear-gradient(145deg, #3a5a3a, #2a4a2a);
+    border-radius: 15px;
+}
+
+.backpack-pocket {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    height: 55px;
+    background: linear-gradient(145deg, #2a4a2a, #1a3a1a);
+    border-radius: 10px;
+    border: 1px solid #6a9a6a;
+}
+
+.backpack-pocket-small {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 30px;
+    background: #2a4a2a;
+    border-radius: 8px;
+    border: 1px solid #6a9a6a;
+}
+
+.backpack-zip {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    right: 30px;
+    height: 4px;
+    background: #b8b890;
+    border-radius: 2px;
+}
+
+.backpack-zip::after {
+    content: "●";
+    position: absolute;
+    right: -8px;
+    top: -3px;
+    font-size: 8px;
+    color: #d4d4a0;
+}
+
+.backpack-logo {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8px;
+    color: #8aba8a;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.backpack-badge {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ffaa55, #ff6a2a);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* ========== ЗАПИСКА (ЦЕНТР, ДОБРЕ ВИДНО) ========== */
+.note-on-desk {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 30;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.note-on-desk:hover {
+    transform: translateX(-50%) translateY(-8px);
+}
+
+.note-paper {
+    width: 160px;
+    height: 120px;
+    background: linear-gradient(145deg, #fdf8ed, #f0e6d0);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.note-on-desk:hover .note-paper {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.note-fold {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, transparent 50%, #d4c4a0 50%);
+    border-radius: 0 0 5px 0;
+}
+
+.note-content {
+    padding: 15px 12px;
+}
+
+.note-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: bold;
+    color: #8a3a2a;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.note-line {
+    height: 2px;
+    background: rgba(0,0,0,0.12);
+    margin: 6px 0;
+    border-radius: 1px;
+}
+
+.note-line.short {
+    width: 70%;
+}
+
+.note-seal {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, #aa3a2a, #6a1a0a);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.note-label {
+    font-size: 10px;
+    color: #ffaa66;
+    font-family: 'Orbitron', monospace;
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+/* ========== КУХОЛЬ З КАВОЮ ========== */
+.coffee-mug {
+    position: absolute;
+    bottom: 45px;
+    right: 180px;
+    width: 55px;
+    height: 60px;
+    z-index: 28;
+    cursor: default;
+}
+
+.mug-body {
+    width: 45px;
+    height: 50px;
+    background: linear-gradient(145deg, #5a4a3a, #3a2a1a);
+    border-radius: 8px 8px 12px 12px;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.mug-handle {
+    position: absolute;
+    right: -12px;
+    top: 12px;
+    width: 14px;
+    height: 22px;
+    border: 3px solid #5a4a3a;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.mug-steam, .mug-steam-2 {
+    position: absolute;
+    top: -12px;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(220,220,220,0.5), transparent);
+    border-radius: 50%;
+    animation: steam 2.5s ease-out infinite;
+}
+
+.mug-steam { left: 10px; }
+.mug-steam-2 { left: 25px; animation-delay: 1.2s; }
+
+@keyframes steam {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-20px) scale(1.8); opacity: 0; }
+}
+
+/* ========== ПЛАНШЕТ ========== */
+.data-pad {
+    position: absolute;
+    bottom: 80px;
+    right: 280px;
+    width: 85px;
+    height: 60px;
+    background: #1a1a2a;
+    border-radius: 8px;
+    border: 2px solid #4a6aaa;
+    z-index: 28;
+    cursor: default;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+.data-pad-screen {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: #0a0a1a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-pad-text {
+    font-size: 7px;
+    color: #4aff4a;
+    font-family: monospace;
+    animation: blinkText 1s step-end infinite;
+}
+
+@keyframes blinkText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ========== ІНСТРУМЕНТИ ========== */
+.tools-set {
+    position: absolute;
+    bottom: 50px;
+    right: 380px;
+    display: flex;
+    gap: 15px;
+    z-index: 28;
+}
+
+.tool-wrench, .tool-screwdriver {
+    width: 55px;
+    height: 12px;
+    border-radius: 6px;
+    position: relative;
+    cursor: default;
+}
+
+.tool-wrench {
+    background: linear-gradient(90deg, #8a8a8a, #6a6a6a);
+    transform: rotate(-15deg);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.tool-wrench::before {
+    content: "🔧";
+    position: absolute;
+    top: -16px;
+    left: 5px;
+    font-size: 24px;
+}
+
+.tool-screwdriver {
+    background: linear-gradient(90deg, #aa8a5a, #8a6a3a);
+    transform: rotate(10deg);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.tool-screwdriver::before {
+    content: "🪛";
+    position: absolute;
+    top: -16px;
+    left: 5px;
+    font-size: 24px;
+}
+
+/* ========== ШОЛОМ ========== */
+.space-helmet {
+    position: absolute;
+    bottom: 70px;
+    left: 280px;
+    width: 65px;
+    height: 65px;
+    background: radial-gradient(circle at 35% 35%, #8a8aaa, #4a4a6a);
+    border-radius: 50%;
+    z-index: 28;
+    cursor: default;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.helmet-visor {
+    position: absolute;
+    top: 15px;
+    left: 12px;
+    width: 40px;
+    height: 30px;
+    background: radial-gradient(ellipse, #aaccee, #4a6a8a);
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(255,255,255,0.5);
+}
+
+.space-helmet::after {
+    content: "HELMET";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 7px;
+    color: #aaaacc;
+    white-space: nowrap;
+}
+
+/* ========== КЛЮЧ-КАРТА ========== */
+.keycard {
+    position: absolute;
+    bottom: 100px;
+    left: 380px;
+    width: 45px;
+    height: 28px;
+    background: linear-gradient(145deg, #ffaa55, #cc8833);
+    border-radius: 3px;
+    transform: rotate(-20deg);
+    z-index: 28;
+    cursor: default;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.keycard::after {
+    content: "🔑";
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    font-size: 14px;
+}
+
+/* ========== БЛОКНОТ ========== */
+.notebook {
+    position: absolute;
+    bottom: 45px;
+    left: 200px;
+    width: 55px;
+    height: 45px;
+    background: #2a1a0a;
+    border-radius: 3px;
+    transform: rotate(8deg);
+    z-index: 28;
+    cursor: default;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.notebook::before {
+    content: "📓";
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    font-size: 22px;
+}
+
+/* ========== ПІДЛОГА ========== */
+.floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to top, #050508, #0a0a0f);
+    z-index: 22;
+    overflow: hidden;
+}
+
+.floor-grid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(90deg, 
+            rgba(30,30,50,0.5) 0px, 
+            rgba(30,30,50,0.5) 2px, 
+            transparent 2px, 
+            transparent 50px),
+        repeating-linear-gradient(0deg, 
+            rgba(30,30,50,0.3) 0px, 
+            rgba(30,30,50,0.3) 2px, 
+            transparent 2px, 
+            transparent 50px);
+}
+
+.floor-reflection {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to top, rgba(255,94,0,0.05), transparent);
+    pointer-events: none;
+}
+
+/* КАБЕЛІ */
+.cables {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 23;
+}
+
+.cable {
+    position: absolute;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(90deg, #4a4a3a, #2a2a1a);
+    border-radius: 4px;
+}
+
+.cable:nth-child(1) { left: 12%; height: 160px; transform: skewX(-10deg); }
+.cable:nth-child(2) { left: 88%; height: 130px; transform: skewX(8deg); }
+.cable:nth-child(3) { left: 50%; height: 100px; transform: skewX(-3deg); }
+
+/* ========== МОДАЛЬНЕ ВІКНО ========== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a1a0f, #0f0f08);
+    padding: 25px;
+    border-radius: 25px;
+    max-width: 550px;
+    width: 90%;
+    border: 1px solid rgba(255,150,50,0.4);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255,150,50,0.3);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    color: #ffaa55;
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.modal-close {
+    font-size: 26px;
+    cursor: pointer;
+    color: #aa7733;
+    transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    color: #ffaa55;
+    background: rgba(255,170,85,0.1);
+    transform: rotate(90deg);
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.item {
+    background: rgba(0,0,0,0.4);
+    padding: 12px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255,200,100,0.2);
+    transition: all 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,200,100,0.6);
+    background: rgba(0,0,0,0.6);
+}
+
+.item-icon { font-size: 24px; }
+.item-name { font-size: 12px; color: #e8d8b0; font-weight: bold; }
+.item-desc { font-size: 9px; color: #aa8844; }
+
+.inventory-hint {
+    font-size: 10px;
+    color: #aa8844;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,150,50,0.2);
+}
+
+/* КУРСОРИ */
+.backpack, .note-on-desk, .item, .modal-close {
+    cursor: pointer;
+}
+
+/* ========== АДАПТИВНІСТЬ ========== */
+@media (max-width: 900px) {
+    .window-frame { width: 350px; height: 200px; }
+    .backpack { left: 20px; width: 120px; height: 145px; }
+    .note-on-desk { width: 130px; }
+    .note-paper { width: 130px; height: 100px; }
+    .coffee-mug { right: 100px; }
+    .data-pad { right: 180px; }
+    .tools-set { right: 280px; }
+    .space-helmet { left: 200px; }
+    .keycard { left: 300px; }
+    .notebook { left: 140px; }
+}
+
+@media (max-width: 700px) {
+    .desk-surface { overflow-x: auto; }
+    .coffee-mug, .data-pad, .tools-set, .space-helmet, .keycard, .notebook {
+        transform: scale(0.8);
+    }
+    .coffee-mug { right: 50px; bottom: 30px; }
+    .data-pad { right: 120px; bottom: 60px; }
+    .tools-set { right: 200px; bottom: 35px; }
+    .space-helmet { left: 160px; bottom: 50px; }
+    .keycard { left: 250px; bottom: 80px; }
+    .notebook { left: 100px; bottom: 30px; }
+}
+
+@media (max-width: 550px) {
+    .coffee-mug, .data-pad, .tools-set, .space-helmet, .keycard, .notebook {
+        display: none;
+    }
+}
+
+/* ========== НОВА КНОПКА - ПОЧАТИ КВЕСТ ========== */
+/* ========== НОВА КНОПКА - ПОЧАТИ КВЕСТ ========== */
+.quest-button-container {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 35;
+    width: auto;
+    min-width: 320px;
+}
+
+.quest-button {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 60px;
+    background: linear-gradient(135deg, #0a2a1a, #1a4a2a);
+    border: 2px solid rgba(255, 150, 50, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 94, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.quest-button:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(255, 150, 50, 1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 94, 0, 0.5);
+}
+
+.quest-button:active {
+    transform: translateY(0px) scale(0.98);
+}
+
+.button-content {
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 5;
+}
+
+.button-icon {
+    font-size: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    animation: iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+.button-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 94, 0, 0.5);
+    white-space: nowrap;
+}
+
+.button-arrow {
+    font-size: 18px;
+    color: #ffaa55;
+    transition: transform 0.3s ease;
+}
+
+.quest-button:hover .button-arrow {
+    transform: translateX(5px);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.quest-button:hover .button-glow {
+    left: 100%;
+}
+
+.button-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background: radial-gradient(circle at center, rgba(255, 150, 50, 0.3), transparent);
+    opacity: 0;
+    animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.3);
+    }
+}
+
+/* Адаптивність для кнопки */
+@media (max-width: 700px) {
+    .quest-button-container {
+        bottom: 30px;
+        min-width: 280px;
+    }
+    
+    .button-content {
+        padding: 10px 18px;
+    }
+    
+    .button-text {
+        font-size: 10px;
+        letter-spacing: 1px;
+        white-space: normal;
+        text-align: center;
+        max-width: 200px;
+    }
+    
+    .button-icon {
+        font-size: 20px;
+    }
+    
+    .button-arrow {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 550px) {
+    .quest-button-container {
+        bottom: 25px;
+        min-width: 260px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+    
+    .button-text {
+        font-size: 9px;
+        max-width: 160px;
+    }
+    
+    .button-content {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quest-button-container {
+        bottom: 20px;
+    }
+    
+    .button-text {
+        font-size: 8px;
+        max-width: 140px;
+    }
+    
+    .button-icon {
+        font-size: 16px;
+    }
+    
+    .button-content {
+        padding: 6px 10px;
+    }
+}

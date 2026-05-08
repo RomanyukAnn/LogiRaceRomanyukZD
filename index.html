@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Mission: Survival</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="screen-pause-btn" onclick="togglePause()">⏸ ПАУЗА</button>
+
+    <div id="game-window">
+        <div id="status-bar">
+            <span id="location">📍 Модуль LogiRace</span>
+            <span id="ox-level">Кисень: 100%</span>
+        </div>
+        <div id="content"></div>
+    </div>
+
+    <div id="game-over-screen">
+        <h1>ВИ ПРОГРАЛИ</h1>
+        <p>Кисень на базі закінчився...</p>
+        <button onclick="location.reload()">СПРОБУВАТИ ЗАНОВО</button>
+    </div>
+
+    <div id="error-overlay">
+        <div class="error-box">
+            <p id="error-msg"></p>
+            <button onclick="closeError()">ЗРОЗУМІЛО</button>
+        </div>
+    </div>
+
+    <div id="hint-modal">
+        <span id="close-hint" onclick="closeHint()">&times;</span>
+        <div id="hint-content">
+            <div id="hint-media"></div>
+            <p id="hint-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

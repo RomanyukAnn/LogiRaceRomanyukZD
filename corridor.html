@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sektor-04: Deep Detail - Марсіанський коридор</title>
+    <link rel="stylesheet" href="corridor.css">
+</head>
+<body>
+    <div class="corridor-scene">
+        <!-- Стеля -->
+        <div class="ceiling">
+            <div class="wire-bundle"></div>
+            <div class="ceiling-lamp"></div>
+            <div class="ventilation"></div>
+        </div>
+        
+        <!-- Ліва стіна -->
+        <div class="wall-left">
+            <div class="pipe pipe-1"></div>
+            <div class="pipe pipe-2"></div>
+            <div class="pipe pipe-3"></div>
+            <div class="hazard-stripe"></div>
+            <div class="warning-sign">⚠ RADIATION ⚠</div>
+        </div>
+
+        <!-- Права стіна -->
+        <div class="wall-right">
+            <div class="vault-structure">
+                <div class="door-frame">
+                    <div class="door-panel left-p">
+                        <div class="rivet r1"></div>
+                        <div class="rivet r2"></div>
+                        <div class="rivet r5"></div>
+                        <div class="rivet r6"></div>
+                    </div>
+                    <div class="door-panel right-p">
+                        <div class="rivet r3"></div>
+                        <div class="rivet r4"></div>
+                        <div class="rivet r7"></div>
+                        <div class="rivet r8"></div>
+                    </div>
+                </div>
+                <div class="door-handle-left"></div>
+                <div class="door-handle-right"></div>
+            </div>
+
+            <div class="intercom-device" onclick="openKeypad()">
+                <div class="scanner-line"></div>
+                <div class="status-dot"></div>
+                <div class="device-label">ACCESS UNIT</div>
+                <div class="speaker-grill"></div>
+            </div>
+        </div>
+
+        <!-- Оглядове вікно на Марс -->
+        <div class="mars-observatory">
+            <div class="glass-container">
+                <img src="https://i.pinimg.com/1200x/44/c6/0a/44c60ae74c1bb6c5fa3d725f075c9767.jpg" alt="Mars Surface">
+                <div class="glass-scratches"></div>
+                <div class="reflection"></div>
+            </div>
+            <div class="frame-bolts">
+                <div class="bolt"></div>
+                <div class="bolt"></div>
+                <div class="bolt"></div>
+                <div class="bolt"></div>
+            </div>
+            <div class="observatory-label">MARS OUTPOST • SECTOR 04</div>
+        </div>
+
+        <!-- Підлога -->
+        <div class="floor-complex">
+            <div class="grating"></div>
+            <div class="under-floor-light"></div>
+            <div class="floor-panel"></div>
+        </div>
+
+        <!-- UI-оверлей з клавіатурою -->
+        <div id="ui-overlay" class="ui-overlay">
+            <div class="keypad-zoom-container">
+                <!-- Записка-підказка -->
+                <div id="folded-note" class="folded-note" onclick="toggleNoteView(event)">
+                    <div class="note-paper">
+                        <div class="note-text">
+                            <h3>📋 ЛОГ-ФАЙЛ: #SEC-04</h3>
+                            <p><strong>1.</strong> Кількість природних супутників Землі?<br>
+                            <span class="hint">🌕 + 🌙 = ?</span></p>
+                            <p><strong>2.</strong> Планет у Сонячній системі (після 2006)?<br>
+                            <span class="hint">Плутон більше не планета...</span></p>
+                            <p><strong>3.</strong> Супутників у червоної планети?<br>
+                            <span class="hint">Фобос + Деймос</span></p>
+                            <p><strong>4.</strong> Сонце — це зірка (1) чи щось інше (0)?</p>
+                            <div class="hand-written">✍️ "Знайди цифри в порядку 1-2-3-4"</div>
+                        </div>
+                    </div>
+                    <div class="note-label">📜 HINT</div>
+                </div>
+
+                <!-- Клавіатура -->
+                <div class="keypad-hardware">
+                    <div class="keypad-screen" id="code-screen">____</div>
+                    <div class="button-grid">
+                        <button onclick="addDigit('1')">1</button>
+                        <button onclick="addDigit('2')">2</button>
+                        <button onclick="addDigit('3')">3</button>
+                        <button onclick="addDigit('4')">4</button>
+                        <button onclick="addDigit('5')">5</button>
+                        <button onclick="addDigit('6')">6</button>
+                        <button onclick="addDigit('7')">7</button>
+                        <button onclick="addDigit('8')">8</button>
+                        <button onclick="addDigit('9')">9</button>
+                        <button class="btn-c" onclick="resetInput()">C</button>
+                        <button onclick="addDigit('0')">0</button>
+                        <button class="btn-e" onclick="validateCode()">E</button>
+                    </div>
+                </div>
+
+                <button class="back-btn" onclick="closeKeypad()">← ПОВЕРНУТИСЬ В КОРИДОР</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="corridor.js"></script>
+</body>
+</html>

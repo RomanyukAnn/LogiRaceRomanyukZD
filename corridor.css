@@ -1,0 +1,698 @@
+/*===============================================
+    corridor.css - Industrial Mars Base Style
+    Sektor-04: Deep Detail
+===============================================*/
+
+:root {
+    --bg: #050508;
+    --metal: #1a1b1f;
+    --metal-light: #2a2b2f;
+    --rust: #3d2317;
+    --danger: #ff2a2a;
+    --danger-glow: rgba(255, 42, 42, 0.4);
+    --paper: #dcd0b3;
+    --paper-dark: #c4b694;
+    --warning: #f1c40f;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
+    overflow: hidden;
+    font-family: 'Courier New', 'Monaco', monospace;
+}
+
+/*===============================================
+    ОСНОВНА СЦЕНА
+===============================================*/
+.corridor-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+/*===============================================
+    СТЕЛЯ
+===============================================*/
+.ceiling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12%;
+    background: linear-gradient(180deg, #0a0a0c 0%, #0f0f12 100%);
+    z-index: 2;
+    border-bottom: 3px solid #1a1a1a;
+    overflow: hidden;
+}
+
+.wire-bundle {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, #222 0px, #222 15px, #111 15px, #111 30px);
+}
+
+.ceiling-lamp {
+    position: absolute;
+    left: 50%;
+    top: -5px;
+    width: 120px;
+    height: 20px;
+    background: linear-gradient(180deg, #444 0%, #222 100%);
+    transform: translateX(-50%);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 30px rgba(255, 42, 42, 0.2);
+}
+
+.ceiling-lamp::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 35px;
+    width: 50px;
+    height: 15px;
+    background: radial-gradient(ellipse, rgba(255,42,42,0.3) 0%, transparent 70%);
+}
+
+.ventilation {
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    width: 80px;
+    height: 40px;
+    background: repeating-linear-gradient(90deg, #1a1a1a 0px, #1a1a1a 5px, #0a0a0a 5px, #0a0a0a 10px);
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+/*===============================================
+    ЛІВА СТІНА
+===============================================*/
+.wall-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18%;
+    height: 100%;
+    background: linear-gradient(90deg, #0d0e12 0%, #16171c 100%);
+    border-right: 4px solid #000;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.pipe {
+    position: absolute;
+    background: linear-gradient(to bottom, #1a1a1a, #2a2a2a, #1a1a1a);
+    border-radius: 8px;
+    box-shadow: inset -2px 0 5px rgba(0,0,0,0.5);
+}
+
+.pipe-1 { 
+    width: 22px; 
+    height: 100%; 
+    left: 20%; 
+}
+
+.pipe-2 { 
+    width: 14px; 
+    height: 100%; 
+    left: 55%; 
+    opacity: 0.8;
+}
+
+.pipe-3 {
+    width: 18px;
+    height: 60%;
+    left: 75%;
+    top: 20%;
+}
+
+.hazard-stripe {
+    position: absolute;
+    bottom: 35%;
+    width: 100%;
+    height: 45px;
+    background: repeating-linear-gradient(45deg, var(--warning), var(--warning) 12px, #000 12px, #000 24px);
+    opacity: 0.4;
+}
+
+.warning-sign {
+    position: absolute;
+    bottom: 25%;
+    left: 25%;
+    transform: rotate(-90deg);
+    color: var(--warning);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    opacity: 0.6;
+}
+
+/*===============================================
+    ПРАВА СТІНА
+===============================================*/
+.wall-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 82%;
+    height: 100%;
+    background: radial-gradient(ellipse at 70% 50%, #13141a 0%, #0e0f13 100%);
+    z-index: 1;
+}
+
+/*===============================================
+    ДВЕРІ
+===============================================*/
+.vault-structure {
+    position: absolute;
+    right: 12%;
+    top: 12%;
+    width: 380px;
+    height: 580px;
+    background: #080808;
+    border: 18px solid #1a1c22;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.door-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    background: #000;
+}
+
+.door-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #1d1e24 0%, #0f1015 100%);
+    border: 1px solid #2a2a2a;
+    position: relative;
+    transition: transform 1.8s cubic-bezier(0.7, 0, 0.3, 1);
+    overflow: hidden;
+}
+
+.door-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+.rivet {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #444, #222);
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 3px #000, 1px 1px 2px rgba(255,255,255,0.1);
+}
+
+.r1 { top: 30px; left: 25px; }
+.r2 { bottom: 30px; left: 25px; }
+.r3 { top: 30px; right: 25px; }
+.r4 { bottom: 30px; right: 25px; }
+.r5 { top: 50%; left: 25px; transform: translateY(-50%); }
+.r6 { top: 50%; left: 55px; transform: translateY(-50%); }
+.r7 { top: 50%; right: 25px; transform: translateY(-50%); }
+.r8 { top: 50%; right: 55px; transform: translateY(-50%); }
+
+.door-handle-left,
+.door-handle-right {
+    position: absolute;
+    width: 8px;
+    height: 50px;
+    background: linear-gradient(90deg, #555, #333, #555);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+}
+
+.door-handle-left {
+    right: 15px;
+}
+
+.door-handle-right {
+    left: 15px;
+}
+
+/* Анімація відчинення дверей */
+.doors-open .left-p {
+    transform: translateX(-100%);
+}
+
+.doors-open .right-p {
+    transform: translateX(100%);
+}
+
+/*===============================================
+    ПРИСТРІЙ ДОСТУПУ (ІНТЕРКОМ)
+===============================================*/
+.intercom-device {
+    position: absolute;
+    right: 48%;
+    top: 48%;
+    width: 50px;
+    height: 85px;
+    background: linear-gradient(145deg, #18181d, #101015);
+    border: 2px solid #2a2a2a;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.intercom-device:hover {
+    border-color: var(--danger);
+    box-shadow: 0 0 18px var(--danger-glow);
+    transform: scale(1.02);
+}
+
+.scanner-line {
+    width: 80%;
+    height: 2px;
+    background: var(--danger);
+    position: absolute;
+    left: 10%;
+    top: 25%;
+    animation: scan 2.5s linear infinite;
+    border-radius: 2px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #4a0000;
+    border-radius: 50%;
+    margin: 42px auto 0;
+    transition: all 0.3s;
+    box-shadow: 0 0 5px rgba(255,0,0,0.3);
+}
+
+.device-label {
+    font-size: 6px;
+    color: #555;
+    text-align: center;
+    margin-top: 6px;
+    letter-spacing: 1px;
+}
+
+.speaker-grill {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    width: 24px;
+    height: 12px;
+    background: repeating-linear-gradient(90deg, #222 0px, #222 2px, #111 2px, #111 4px);
+    border-radius: 2px;
+}
+
+/*===============================================
+    ОГЛЯДОВЕ ВІКНО (МАРС)
+===============================================*/
+.mars-observatory {
+    position: absolute;
+    left: 22%;
+    top: 10%;
+    width: 35%;
+    height: 42%;
+    background: #000;
+    border: 12px solid #1a1c22;
+    border-radius: 12px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 25px var(--danger-glow);
+    z-index: 3;
+    overflow: hidden;
+}
+
+.glass-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.glass-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.5) contrast(1.3) brightness(0.85);
+}
+
+.glass-scratches {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/scratched-metal.png');
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.reflection {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-20deg);
+    animation: reflect 8s ease-in-out infinite;
+}
+
+.frame-bolts {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    pointer-events: none;
+}
+
+.bolt {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #555, #222);
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
+.bolt:nth-child(1) { top: 5px; left: 5px; }
+.bolt:nth-child(2) { top: 5px; right: 5px; }
+.bolt:nth-child(3) { bottom: 5px; left: 5px; }
+.bolt:nth-child(4) { bottom: 5px; right: 5px; }
+
+.observatory-label {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 2px;
+}
+
+/*===============================================
+    ПІДЛОГА
+===============================================*/
+.floor-complex {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(180deg, #0a0a0a 0%, #151515 100%);
+    z-index: 1;
+    transform: rotateX(48deg);
+    transform-origin: bottom;
+    border-top: 3px solid #2a2a2a;
+}
+
+.grating {
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.7) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.7) 2px, transparent 2px);
+    background-size: 35px 35px;
+}
+
+.under-floor-light {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 50%;
+    height: 6px;
+    background: var(--danger);
+    filter: blur(25px);
+    animation: flicker 3.5s infinite;
+}
+
+.floor-panel {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    width: 80%;
+    height: 20px;
+    background: repeating-linear-gradient(90deg, #1a1a1a 0px, #1a1a1a 30px, #222 30px, #222 60px);
+    opacity: 0.5;
+}
+
+/*===============================================
+    UI ОВЕРЛЕЙ (КЛАВІАТУРА)
+===============================================*/
+.ui-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(15,15,20,0.98) 0%, rgba(0,0,0,1) 100%);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.keypad-zoom-container {
+    position: relative;
+    padding: 50px 80px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 30px;
+}
+
+/* Панель клавіатури */
+.keypad-hardware {
+    background: linear-gradient(145deg, #131315, #0a0a0c);
+    padding: 35px 40px;
+    border: 3px solid #2a2a2e;
+    border-radius: 20px;
+    box-shadow: 0 0 80px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.keypad-screen {
+    width: 100%;
+    min-width: 280px;
+    height: 70px;
+    background: #030303;
+    border: 2px solid #2a2a2a;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: var(--danger);
+    font-size: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 18px;
+    text-shadow: 0 0 12px var(--danger);
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 85px);
+    gap: 15px;
+}
+
+.button-grid button {
+    height: 85px;
+    background: linear-gradient(145deg, #1e1e24, #121216);
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #999;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.08s linear;
+    font-family: monospace;
+}
+
+.button-grid button:active {
+    background: #1a1a1a;
+    transform: scale(0.94);
+    color: var(--danger);
+}
+
+.button-grid button:hover {
+    color: #fff;
+    border-color: var(--danger);
+    box-shadow: 0 0 8px var(--danger-glow);
+}
+
+.btn-e {
+    background: linear-gradient(145deg, #2a1515, #1a0a0a) !important;
+    color: var(--danger) !important;
+}
+
+.btn-c {
+    color: #666 !important;
+}
+
+/* Записка */
+.folded-note {
+    position: absolute;
+    top: 30px;
+    right: -120px;
+    width: 70px;
+    height: 45px;
+    background: var(--paper);
+    transform: rotate(12deg);
+    cursor: pointer;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.note-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    padding-top: 14px;
+    color: #7a6e54;
+    text-transform: uppercase;
+}
+
+.folded-note.open {
+    width: 340px;
+    height: auto;
+    right: -380px;
+    top: -20px;
+    transform: rotate(0deg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.note-text {
+    display: none;
+    color: #2c1810;
+    font-family: 'Courier New', monospace;
+}
+
+.folded-note.open .note-text {
+    display: block;
+}
+
+.folded-note.open .note-label {
+    display: none;
+}
+
+.note-text h3 {
+    border-bottom: 2px solid #8b5a2b;
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: #3a2010;
+}
+
+.note-text p {
+    font-size: 14px;
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+.hint {
+    font-size: 11px;
+    color: #6b4c2c;
+    font-style: italic;
+}
+
+.hand-written {
+    font-style: italic;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px dashed #8b5a2b;
+    font-size: 12px;
+    opacity: 0.9;
+    font-family: 'Segoe Script', cursive;
+}
+
+/* Кнопка назад */
+.back-btn {
+    margin-top: 45px;
+    background: transparent;
+    border: 2px solid #333;
+    border-radius: 30px;
+    color: #777;
+    padding: 12px 28px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+.back-btn:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 0 0 15px var(--danger-glow);
+    background: rgba(255,42,42,0.05);
+}
+
+/*===============================================
+    АНІМАЦІЇ
+===============================================*/
+@keyframes scan {
+    0%, 100% {
+        top: 20%;
+        opacity: 0.6;
+    }
+    50% {
+        top: 75%;
+        opacity: 1;
+    }
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.3; }
+}
+
+@keyframes reflect {
+    0% { left: -100%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/*===============================================
+    РЕСПОНСИВ
+===============================================*/
+@media (max-width: 1200px) {
+    .vault-structure { width: 320px; height: 500px; right: 8%; top: 15%; }
+    .mars-observatory { width: 40%; left: 20%; }
+    .button-grid { grid-template-columns: repeat(3, 70px); }
+    .button-grid button { height: 70px; font-size: 1.5rem; }
+    .folded-note.open { width: 280px; right: -320px; }
+}
+
+@media (max-width: 800px) {
+    .wall-left { width: 25%; }
+    .wall-right { width: 75%; }
+    .vault-structure { transform: scale(0.8); right: -5%; top: 5%; }
+    .intercom-device { right: 42%; }
+}
