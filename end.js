@@ -16,7 +16,7 @@ const finalMessage = "Ти зробив неможливе. Марс тепер 
 
 // Безкоштовні панорами Марса (одна з них завантажиться)
 const panoramaUrls = [
-    'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/mars_atmos_2048.jpg',
+    'https://file.vidhubfile.com/imgtok/post/hN16kjQ/f_001.png',
 ];
 
 let currentUrlIndex = 0;
@@ -278,7 +278,7 @@ function restartGame() {
     
     // Перехід на hall.html
     setTimeout(() => {
-        window.location.href = 'hall.html';
+        window.location.href = 'index.html';
     }, 800);
 }
 
